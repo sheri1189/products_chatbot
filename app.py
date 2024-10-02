@@ -5,7 +5,7 @@ import os
 from dotenv import load_dotenv
 from streamlit_chat import message
 load_dotenv()
-openai.api_key = os.getenv("OPENAI_API_KEY")
+openai.api_key = st.secrets['OPENAI_API_KEY']
 
 def chat_with_csv(df, prompt):
     df_str = df.to_csv(index=False)
