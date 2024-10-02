@@ -1,10 +1,7 @@
 import streamlit as st
 import pandas as pd
 import openai
-import os
-from dotenv import load_dotenv
 from streamlit_chat import message
-load_dotenv()
 openai.api_key = st.secrets['OPENAI_API_KEY']
 
 def chat_with_csv(df, prompt):
