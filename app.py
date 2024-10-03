@@ -35,7 +35,8 @@ def reset_session_state():
 
 st.set_page_config(
     page_title="ibexstack Chatbot (own data)(only csv)", layout='wide')
-st.markdown("<a href='/'><img src='http://dev.ibexstack.com/stagging/assets/images/creative/logo_white.png' alt='Img not found' style='width: 182px;margin-top: 0px;'/></a>", unsafe_allow_html=True)
+# st.markdown("<a href='/'><img src='http://dev.ibexstack.com/stagging/assets/images/creative/logo_white.png' alt='Img not found' style='width: 182px;margin-top: 0px;'/></a>", unsafe_allow_html=True)
+st.image('./logo/logo_white.png', width=150)
 hide_fullscreen_icon = """<style>button[title="View fullscreen"] {display: none;}</style>"""
 st.markdown(hide_fullscreen_icon, unsafe_allow_html=True)
 st.markdown(
