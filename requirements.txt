@@ -1,3 +1,6 @@
-openai
 streamlit
+pandasai
+python-dotenv
+pandas
+openai
 streamlit-chat
