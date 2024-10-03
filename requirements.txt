@@ -2,5 +2,5 @@ streamlit
 pandasai
 python-dotenv
 pandas
-openai
+openai=0.28.0
 streamlit-chat
