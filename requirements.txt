@@ -1,3 +1,5 @@
 streamlit
+pandasai
+pandas
 openai==0.28.0
 streamlit-chat
