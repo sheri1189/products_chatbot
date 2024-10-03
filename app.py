@@ -4,10 +4,11 @@ import openai
 from streamlit_chat import message
 openai.api_key = st.secrets['OPENAI_API_KEY']
 
+
 def chat_with_csv(df, prompt):
     df_str = df.to_csv(index=False)
     messages = [
-        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "system", "content": "You are a helpful and polite assistant."},
         {"role": "user", "content": f"Data:\n{df_str}\n\nQuery: {prompt}"}
     ]
     for attempt in range(3):
@@ -23,7 +24,7 @@ def chat_with_csv(df, prompt):
             st.error(f"Error: {e}")
             if attempt < 2:
                 st.warning("Retrying...")
-            else: 
+            else:
                 return "Failed to get a response from the model."
 
 
@@ -41,6 +42,7 @@ st.markdown(
     "<div style='display:flex'><h4 style='font-size:30px'>ibexstack Chatbot</h4><h5 style='font-size: 15px;font-weight:bold;margin-left: -22px;margin-top: 24px;color:#ff4b4b'>(own data)(only csv)</h5></div>",
     unsafe_allow_html=True
 )
+
 input_csv = st.file_uploader("Upload your CSV file", type=['csv'])
 if input_csv is not None:
     reset_session_state()
@@ -48,6 +50,7 @@ if input_csv is not None:
     with col1:
         st.success("Your CSV Data")
         data = pd.read_csv(input_csv)
+        data = data.head(50)
         st.dataframe(data, use_container_width=True)
     with col2:
         st.success("Enter your Query Below")
@@ -56,4 +59,3 @@ if input_csv is not None:
             message(input_text, is_user=True)
             result = chat_with_csv(data, input_text)
             message(result)
-                
